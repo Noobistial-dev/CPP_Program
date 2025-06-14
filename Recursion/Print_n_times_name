@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+void func(int i,int a){
+    if(i>a){
+        return;
+    }
+    cout<<"Noobistial,"<<" ";
+    func(i+1, a);    
+}
+int main(){
+    int n;
+    cin>> n;
+    func(1,n);
+}
+
+// or other method
+
+#include <iostream>
+using namespace std;
+
+void printName(string name, int n) {
+    if (n <= 0)
+        return;
+    cout << name << endl;
+    printName(name, n - 1);
+}
+
+int main() {
+    string name = "Noobistial";
+    int n = 5;
+    printName(name, n);
+    return 0;
+}
