@@ -1,0 +1,19 @@
+//  find sum of first n natural numbers
+
+#include <iostream>
+using namespace std;
+
+int recurSum(int x){
+    if(x<=1){
+        return x;
+    }
+    return x + recurSum(x-1);
+}
+
+
+int main(){
+    int a;
+    cin>> a;
+    cout<<recurSum(a);
+    return 0;
+}
