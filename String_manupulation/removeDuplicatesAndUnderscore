@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+vector<string> removeDuplicatesAndUnderscore(vector<int>& nums) {
+    if (nums.empty()) return {};
+
+    vector<string> result;
+    result.push_back(to_string(nums[0]));
+    int count = 1;
+
+    for (int i = 1; i < nums.size(); ++i) {
+        if (nums[i] != nums[i - 1]) {
+            result.push_back(to_string(nums[i]));
+            count++;
+        }
+    }
+
+    // Add underscores to fill the rest of the array
+    while (result.size() < nums.size()) {
+        result.push_back("_");
+    }
+
+    return result;
+}
+
+
+int main() {
+    vector<int> nums = {0, 0, 1, 1, 1, 2, 3, 3};
+    vector<string> res = removeDuplicatesAndUnderscore(nums);
+
+    for (const string& s : res) {
+        cout << s << " ";
+    }
+    return 0;
+}
