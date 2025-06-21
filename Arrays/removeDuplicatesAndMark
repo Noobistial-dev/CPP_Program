@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <climits> // for INT_MIN
+using namespace std;
+
+int removeDuplicatesAndMark(vector<int>& nums) {
+    if (nums.empty()) return 0;
+
+    int k = 1; // index for unique elements
+
+    for (int i = 1; i < nums.size(); i++) {
+        if (nums[i] != nums[k - 1]) {
+            nums[k] = nums[i];
+            k++;
+        }
+    }
+
+    // Replace duplicates with -1 (represents "_")
+    for (int i = k; i < nums.size(); i++) {
+        nums[i] = -1;
+    }
+
+    return k; // count of unique elements
+}
+
+int main() {
+    vector<int> nums = {1, 1, 2, 3, 3, 3, 4};
+    int k = removeDuplicatesAndMark(nums);
+
+    for (int val : nums) {
+        if (val == -1) cout << "_ ";
+        else cout << val << " ";
+    }
+
+    return 0;
+}
